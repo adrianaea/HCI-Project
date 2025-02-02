@@ -1,0 +1,64 @@
+/* CSS Reset */
+
+*{
+	margin: 0;
+	padding: 0;
+
+}
+
+/* Bacground Image */
+body{
+	background-image: url(../Images/);
+	background-repeat: no-repeat;
+}
+
+/* Header */
+.header{
+	min-height: 200em;
+	width: 100%;
+	background-position: center;
+	position: relative;
+}
+
+/* Menu */
+.menu{
+	width: 100px;
+	display: inline-block;
+	text-align: right;
+	/* color: #; */
+	/* font-size: ; */
+}
+
+/* Spacing of Nav Bar */
+.nav{
+	position: relative;
+	float: right;
+	display: block;
+	padding: 5% 10%;
+	justify-content: space-between;
+	text-align: right;
+	margin-bottom: 20px;
+	height: 50%;
+}
+
+/* Logo */
+
+/* Header */
+
+/* Body Text */
+
+/* Paragraph Text Box */
+
+/*  */ 
+
+/*  */
+
+/*  */
+
+/*  */
+
+/*  */
+
+/*  */
+
+/*  */
