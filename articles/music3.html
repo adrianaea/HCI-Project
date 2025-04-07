@@ -1,125 +1,315 @@
 <!DOCTYPE html>
-<html lang="eng">
-    <head>
-        <link rel="stylesheet" href="/style.css">
-        <title> | THE VAULT</title>
-        <meta carset="utf-8"/>
-        <meta name="" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <div class="logo" a href="home.html"><img src="images/logo.png"></a>
-    </head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROCK EVOLUTION | THE VAULT</title>
+    <link rel="icon" href="/images/vault.png" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      /* Main Styles */
+      body {
+        background-color: #111;
+        color: #eee;
+      }
+      
+      .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      
+      h2 {
+        text-align: center;
+        color: #ff5555;
+        margin-bottom: 5px;
+        font-size: 2.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      }
+      
+      @media (max-width: 600px) {
+        h2 {
+          font-size: 2.2rem;
+        }
+      }
+      
+      .page-intro {
+        text-align: center;
+        color: #aaa;
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+      }
+      
+      /* Timeline */
+      .timeline {
+        position: relative;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      
+      .timeline::before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        background: #ff5555;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -2px;
+      }
+      
+      /* Era Cards */
+      .era {
+        padding: 20px;
+        position: relative;
+        background: #222;
+        width: 42%;
+        margin-bottom: 50px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      }
+      
+      .era p {
+        color: #ddd;
+        font-size: 0.92rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+      
+      .era:nth-child(odd) {
+        left: 0;
+      }
+      
+      .era:nth-child(even) {
+        left: 54%;
+      }
+      
+      .era-title {
+        color: #ff5555;
+        margin-top: 0;
+        font-size: 1.4rem;
+        border-bottom: 2px solid #333;
+        padding-bottom: 10px;
+      }
+      
+      .era-years {
+        position: absolute;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: #ff5555;
+        color: #111;
+        font-weight: bold;
+        top: 20px;
+        border-radius: 4px;
+      }
+      
+      .era:nth-child(odd) .era-years {
+        right: -140px;
+      }
+      
+      .era:nth-child(even) .era-years {
+        left: -140px;
+      }
+      
+      .player-note {
+        font-size: 0.85rem;
+        color: #aaa !important;
+        margin: 3px 0 0;
+      }
+      
+      .player-note a {
+        color: #aaa !important;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+      
+      .player-note a:hover {
+        color: #ccc !important;
+        text-decoration: underline;
+      }
 
-    <body> 
-        <!-- Navigation menu -->   
-        <nav class="navbar">
-            <div class="logo">
-              <a href="/home.html"
-                ><img src="/images/vault.png" alt="Logo" id="logoimg" />The VAULT
-              </a>
-            </div>
+      /* Audio Players */
+      .audio-demo {
+        background: #000;
+        padding: 15px;
+        border-radius: 6px;
+        margin: 15px 0;
+      }
+      
+      .audio-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+        color: #ff9999;
+      }
+      
+      audio {
+        width: 100%;
+        filter: sepia(50%) saturate(300%) brightness(80%) hue-rotate(10deg);
+      }
+      
+      /* Artist Grid */
+      .artists-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin: 15px 0;
+      }
+      
+      .artist-pill {
+        background: #333;
+        color: #eee;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        text-align: center;
+      }
+      
+      /* Back Links */
+      .back-links {
+        text-align: center;
+        margin-top: 60px;
+      }
+      
+      .back-links a {
+        color: #ff5555;
+        text-decoration: none;
+        margin: 0 15px;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+      
+      .back-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar"></nav>
+    <br/> <br/>
+    
+    <div class="content">
+      <h2>ROCK EVOLUTION</h2>
+      <p class="page-intro">
+        Trace the DNA of rock through pivotal moments. <br/> Click play to hear how each era 
+        built upon the last—from bluesy roots to metal complexity.
+      </p>
+      
+      <div class="timeline">
+        <!-- Era 1 -->
+        <div class="era">
+          <div class="era-years">1965-1970</div>
+          <h3 class="era-title">Psychedelic Dawn</h3>
+          <br/>
+          <p>The British Invasion meets acid tests. Extended solos, modal experimentation, 
+          and the birth of heavy guitar tones.</p>
           
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/signin.html" id="account">ACCOUNT </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="signin.html">Sign In</a> 
-                <a href="signup.html" class="last">Sign Up</a>
-              </div>
-            </div>
+          <div class="spotify-player">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3xyTufSSGLP3oZnomceAVW?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p class="player-note">♬ 30-second preview - <a href="https://open.spotify.com/embed/track/3xyTufSSGLP3oZnomceAVW?utm_source=generator" target="_blank">Full song on Spotify</a></p>
+          </div>
           
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a> MORE </a> <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="/FAQ.html">FAQ</a>
-                <a href="/contact.html">Contact</a>
-                <a href="/about.html" class="last">About</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/anime.html"> ANIME </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="anime1.html">News</a>
-                <a href="anime2.html">Reviews</a>
-                <a href="anime3.html" class="last">Shonen</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/food.html"> FOOD </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="food1.html">News</a>
-                <a href="food2.html">Reviews</a>
-                <a href="food3.html" class="last">Article 3</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/gaming.html"> GAMING </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="gaming1.html">News</a>
-                <a href="gaming2.html">Reviews</a>
-                <a href="gaming3.html" class="last">Article 3</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/movie.html"> MOVIES & TV </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="movie1.html">News</a>
-                <a href="movie2.html">Article 2</a>
-                <a href="movie3.html" class="last">Reviews</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/music.html"> MUSIC </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="music1.html">News</a>
-                <a href="music2.html">Reviews</a>
-                <a href="music3.html" class="last">Article 3</a>
-              </div>
-            </div>
-          </nav>
-
-
-    <div class="text-box">
-        <h1>Article 5-3</h1>
-        <p>This page is a template page for the rest of the website. We should copy this and then edit it accordingly based on the webpage's purpose.</p>
+          <div class="artists-grid">
+            <span class="artist-pill">Pink Floyd</span>
+            <span class="artist-pill">The Jimi Hendrix Experience</span>
+            <span class="artist-pill">Cream</span>
+          </div>
+        </div>
+        
+        <!-- Era 2 -->
+        <div class="era">
+          <div class="era-years">1970-1976</div>
+          <h3 class="era-title">Progressive Expansion</h3>
+          <br/>
+          <p>Concept albums and technical virtuosity. Odd time signatures, synthesizers, 
+          and 20-minute epics redefine rock's possibilities.</p>
+          
+          <div class="spotify-player">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6Vjk8MNXpQpi0F4BefdTyq?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p class="player-note">♬ 30-second preview - <a href="https://open.spotify.com/track/3p0QpWZP4XOFO2ZuWJ5fZP" target="_blank">Full song on Spotify</a></p>
+          </div>
+          
+          <div class="artists-grid">
+            <span class="artist-pill">Led Zeppelin</span>
+            <span class="artist-pill">Yes</span>
+            <span class="artist-pill">Genesis</span>
+          </div>
+        </div>
+        
+        <!-- Era 3 -->
+        <div class="era">
+          <div class="era-years">1977-1983</div>
+          <h3 class="era-title">Metal Forges Ahead</h3>
+          <br/>
+          <p>Distortion gets heavier, tempos faster. The New Wave of British Heavy Metal 
+          sets the template for thrash.</p>
+          
+          <div class="spotify-player">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5DrNFzZZZVfXaEZCaceKnp?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p class="player-note">♬ 30-second preview - <a href="https://open.spotify.com/track/3p0QpWZP4XOFO2ZuWJ5fZP" target="_blank">Full song on Spotify</a></p>
+          </div>
+          
+          <div class="artists-grid">
+            <span class="artist-pill">Metallica</span>
+            <span class="artist-pill">Iron Maiden</span>
+            <span class="artist-pill">Megadeth</span>
+          </div>
+        </div>
+        
+        <!-- Era 4 -->
+        <div class="era">
+          <div class="era-years">1988-1995</div>
+          <h3 class="era-title">Alternative Explosion</h3>
+          <br/>
+          <p>Grunge and shoegaze reject hair metal excess. Raw production, 
+          introspective lyrics, and wall-of-sound guitars dominate.</p>
+          
+          <div class="spotify-player">
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0jmKzJmUEKNbC7eU8YfOiA?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <p class="player-note">♬ 30-second preview - <a href="https://open.spotify.com/track/3p0QpWZP4XOFO2ZuWJ5fZP" target="_blank">Full song on Spotify</a></p>
+          </div>
+          
+          <div class="artists-grid">
+            <span class="artist-pill">Smashing Pumpkins</span>
+            <span class="artist-pill">Nirvana</span>
+            <span class="artist-pill">Soundgarden</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="back-links">
+        <a href="/music.html">Back to Music</a>
+        <a href="/index.html">Back to Home</a>
+      </div>
     </div>
+    
     <br />
     <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <a href="/music.html"> Back to Music </a>
-    <br>
-    <a href="/home.html"> Back to Home </a>
+    <footer class="footer"></footer>
 
-</body>
+    <script>
+      // Audio enhancement - pause others when one plays
+      document.addEventListener('DOMContentLoaded', function() {
+        const audioPlayers = document.querySelectorAll('audio');
+        audioPlayers.forEach(player => {
+          player.addEventListener('play', function() {
+            audioPlayers.forEach(p => {
+              if (p !== player) p.pause();
+            });
+          });
+        });
+      });
+    </script>
 
-<main>
-    <div id=""></div>
-</main>
-
-<footer>
-    <p>Editors: </p>
-    <p> <p>
-</footer>
+    <script src="scriptforarticle.js"></script>
+  </body>
+</html>

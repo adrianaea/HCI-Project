@@ -1,125 +1,479 @@
 <!DOCTYPE html>
-<html lang="eng">
-    <head>
-        <link rel="stylesheet" href="/style.css">
-        <title> | THE VAULT</title>
-        <meta carset="utf-8"/>
-        <meta name="" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <div class="logo" a href="home.html"><img src="images/logo.png"></a>
-    </head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALBUM REVIEWS | THE VAULT</title>
+    <link rel="icon" href="/images/vault.png" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      /* Album Reviews Page Styles */
+      body {
+        background-color: #f5f5f5;
+       /* font-family: 'Arial', sans-serif; */
+      }
+      
+      .content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      
+      h2 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 5px;
+      }
+      
+      .page-intro {
+        text-align: center;
+        color: #666;
+        margin-bottom: 40px;
+        font-size: 1.1rem;
+      }
+      
+      .albums-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 40px;
+        padding: 20px;
+      }
+      
+      /* Album Container Styles */
+      .album-container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+        overflow: visible;
+      }
+      
+      .album-cover {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+      }
+      
+      /* CD/Vinyl Media Styles */
+      .album-media {
+        position: absolute;
+        width: 160px;
+        height: 160px;
+        right: -60px;
+        top: 20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+        z-index: 1;
+      }
+      
+      .album-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+      }
+      
+      /* Hover Effects */
+      .album-container:hover .album-cover {
+        transform: translateX(-15px);
+      }
+      
+      .album-container:hover .album-media {
+        opacity: 1;
+        right: -40px;
+      }
+      
+      /* Review Modal Styles */
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.7);
+        z-index: 100;
+        display: none;
+        justify-content: center;
+        align-items: center;
+      }
+      
+      .review-modal {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        width: 80%;
+        max-width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        transform: scale(0.8);
+        opacity: 0;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+      
+      .review-modal.active {
+        transform: scale(1);
+        opacity: 1;
+      }
+      
+      .modal-header {
+        padding: 20px;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .modal-title {
+        margin: 0;
+        color: #333;
+      }
+      
+      .close-modal {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #666;
+      }
+      
+      .modal-content {
+        padding: 20px;
+      }
+      
+      .album-info {
+        display: flex;
+        margin-bottom: 20px;
+        align-items: flex-start;
+      }
+      
+      .modal-album-cover {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 20px;
+      }
+      
+      .album-details {
+        flex: 1;
+        padding-top: 5px;
+      }
+      
+      .album-meta {
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+      
+      .album-meta-row {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      
+      .meta-label {
+        color: #444;
+        font-weight: 600;
+        min-width: 70px;
+        display: inline-block;
+      }
+      
+      .album-meta strong {
+        color: #444;
+        font-weight: 600;
+        display: inline-block;
+        width: 80px;
+      }
+      
+      .meta-value {
+        flex: 1;
+      }
+      
+      .review-text {
+        line-height: 1.6;
+        color: #333;
+      }
+      
+      .back-links {
+        text-align: center;
+        margin-top: 40px;
+      }
+      
+      .back-links a {
+        color: #1db954;
+        text-decoration: none;
+        margin: 0 10px;
+        font-weight: bold;
+      }
+      
+      .back-links a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
 
-    <body> 
-        <!-- Navigation menu -->   
-        <nav class="navbar">
-            <div class="logo">
-              <a href="/home.html"
-                ><img src="/images/vault.png" alt="Logo" id="logoimg" />The VAULT
-              </a>
-            </div>
-          
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/signin.html" id="account">ACCOUNT </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="signin.html">Sign In</a> 
-                <a href="signup.html" class="last">Sign Up</a>
-              </div>
-            </div>
-          
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a> MORE </a> <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="/FAQ.html">FAQ</a>
-                <a href="/contact.html">Contact</a>
-                <a href="/about.html" class="last">About</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/anime.html"> ANIME </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="anime1.html">News</a>
-                <a href="anime2.html">Reviews</a>
-                <a href="anime3.html" class="last">Shonen</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/food.html"> FOOD </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="food1.html">News</a>
-                <a href="food2.html">Reviews</a>
-                <a href="food3.html" class="last">Article 3</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/gaming.html"> GAMING </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="gaming1.html">News</a>
-                <a href="gaming2.html">Reviews</a>
-                <a href="gaming3.html" class="last">Article 3</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/movie.html"> MOVIES & TV </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="movie1.html">News</a>
-                <a href="movie2.html">Article 2</a>
-                <a href="movie3.html" class="last">Reviews</a>
-              </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/music.html"> MUSIC </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="music1.html">News</a>
-                <a href="music2.html">Reviews</a>
-                <a href="music3.html" class="last">Article 3</a>
-              </div>
-            </div>
-          </nav>
-
-
-    <div class="text-box">
-        <h1>Article 5-2</h1>
-        <p>This page is a template page for the rest of the website. We should copy this and then edit it accordingly based on the webpage's purpose.</p>
+  <body>
+    <nav class="navbar"></nav>
+    <br/> <br/>
+    
+    <div class="content">
+      <h2>ALBUM REVIEWS</h2>
+      <p class="page-intro">Dive into Amanda's personally handpicked collection of timeless albums. Click any cover to read her in-depth reviews.</p>
+      
+      <div class="albums-grid">
+        <!-- Deftones - Diamond Eyes -->
+        <div class="album-container" data-album="diamond-eyes">
+          <img src="/images/music/albums/diamond-eyes.jpg" alt="Diamond Eyes by Deftones" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+        
+        <!-- Rainbow - Catch the Rainbow -->
+        <div class="album-container" data-album="catch-the-rainbow">
+          <img src="/images/music/albums/catch-the-rainbow.jpg" alt="Catch the Rainbow by Rainbow" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+        
+        <!-- Kanye West - Graduation -->
+        <div class="album-container" data-album="graduation">
+          <img src="/images/music/albums/graduation-kanye.jpg" alt="Graduation by Kanye West" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+        
+        <!-- Metallica - Ride the Lightning -->
+        <div class="album-container" data-album="ride-the-lightning">
+          <img src="/images/music/albums/ride-the-lightning.jpg" alt="Ride the Lightning by Metallica" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+        
+        <!-- Megadeth - So Far So Good So What -->
+        <div class="album-container" data-album="so-far-so-good">
+          <img src="/images/music/albums/so-far-so-good.jpg" alt="So Far, So Good... So What! by Megadeth" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+        
+        <!-- Led Zeppelin - Physical Graffiti -->
+        <div class="album-container" data-album="physical-graffiti">
+          <img src="/images/music/albums/physical-graffiti.jpg" alt="Physical Graffiti by Led Zeppelin" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+        
+        <!-- Smashing Pumpkins - Siamese Dream -->
+        <div class="album-container" data-album="siamese-dream">
+          <img src="/images/music/albums/siamese-dream.jpg" alt="Siamese Dream by The Smashing Pumpkins" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+        
+        <!-- Pink Floyd - Dark Side of the Moon -->
+        <div class="album-container" data-album="dark-side">
+          <img src="/images/music/albums/dark-side-of-the-moon.jpg" alt="The Dark Side of the Moon by Pink Floyd" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+        
+        <!-- Sade - Love Deluxe -->
+        <div class="album-container" data-album="love-deluxe">
+          <img src="/images/music/albums/love-deluxe.jpg" alt="Love Deluxe by Sade" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+        
+        <!-- Naked Eyes - Naked Eyes -->
+        <div class="album-container" data-album="naked-eyes">
+          <img src="/images/music/albums/naked-eyes.jpg" alt="Naked Eyes by Naked Eyes" class="album-cover">
+          <div class="album-media"></div>
+        </div>
+      </div>
+      
+      <!-- Review Modal (hidden by default) -->
+      <div class="modal-overlay" id="reviewModal">
+        <div class="review-modal">
+          <div class="modal-header">
+            <h3 class="modal-title" id="modalAlbumTitle">Album Title</h3>
+            <button class="close-modal">&times;</button>
+          </div>
+          <div class="modal-content" id="modalContent">
+            <!-- Content will be inserted here by JavaScript -->
+          </div>
+        </div>
+      </div>
+      
+      <div class="back-links">
+        <a href="/music.html">Back to Music</a>
+        <a href="/index.html">Back to Home</a>
+      </div>
     </div>
     <br />
     <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <a href="/music.html"> Back to Music </a>
-    <br>
-    <a href="/home.html"> Back to Home </a>
+    <footer class="footer"></footer>
 
-</body>
+    <script>
+      // Album data with reviews
+      const albumData = {
+        "diamond-eyes": {
+          title: "Diamond Eyes",
+          artist: "Deftones",
+          year: "2010",
+          genre: "Alternative Metal",
+          review: "Diamond Eyes marks a triumphant return for Deftones after their previous album's turbulence. The title track opens with a crushing yet melodic riff that sets the tone for the entire record. Chino Moreno's vocals soar between ethereal melodies and aggressive screams, perfectly complementing the band's signature blend of heavy and atmospheric elements. Standout tracks like 'Royal' and 'Sextape' showcase their ability to create dense, textured soundscapes while maintaining raw energy. The production is crisp yet organic, allowing each instrument to shine. A modern alternative metal masterpiece that rewards repeated listens.",
+          image: "/images/music/albums/diamond-eyes2.jpg"
+        },
+        "catch-the-rainbow": {
+          title: "Catch the Rainbow",
+          artist: "Rainbow",
+          year: "1975",
+          genre: "Hard Rock/Heavy Metal",
+          review: "Rainbow's debut album captures the magical collaboration between Ritchie Blackmore's virtuosic guitar work and Ronnie James Dio's powerful vocals. The title track is a monumental achievement - a slow-burning epic that builds to an emotional crescendo. Blackmore's medieval-inspired riffs blend seamlessly with Dio's fantasy-themed lyrics, creating a unique sound that would define early metal. 'Man on the Silver Mountain' became an instant classic with its anthemic chorus and blistering solos. The rhythm section of Craig Gruber and Gary Driscoll provides a solid foundation for Blackmore's improvisations. A seminal work that bridged hard rock and heavy metal.",
+          image: "/images/music/albums/catch-the-rainbow2.jpg"
+        },
+        "graduation": {
+          title: "Graduation",
+          artist: "Kanye West",
+          year: "2007",
+          genre: "Hip-Hop/Electronic",
+          review: "Kanye West's third album completes his education-themed trilogy with his most polished and ambitious work to date. Graduation finds the perfect balance between stadium-sized anthems ('Stronger', 'Good Life') and introspective moments ('Everything I Am', 'Big Brother'). The Daft Punk-sampling 'Stronger' became a cultural phenomenon, while 'Flashing Lights' showcases Kanye's growing sophistication as a producer. The album's electronic influences and synth-heavy production marked a departure from his earlier soul samples, influencing hip-hop's direction for years to come. Features from Chris Martin and T-Pain add diversity without disrupting the cohesive vision. A landmark in 2000s hip-hop.",
+          image: "/images/music/albums/graduation-kanye2.jpg"
+        },
+        "ride-the-lightning": {
+          title: "Ride the Lightning",
+          artist: "Metallica",
+          year: "1984",
+          genre: "Thrash Metal",
+          review: "Metallica's sophomore album represents a quantum leap in songwriting and musicianship. The thrash metal intensity of 'Fight Fire With Fire' and 'Trapped Under Ice' is balanced by the epic 'Fade to Black', one of metal's first power ballads. James Hetfield's rhythm guitar work is razor-sharp, while Kirk Hammett's solos demonstrate remarkable maturity for a 21-year-old. The title track's lightning-fast riffs and anti-death penalty theme showcase the band's growing political awareness. Cliff Burton's bass lines on 'For Whom the Bell Tolls' and 'The Call of Ktulu' are masterclasses in metal bass playing. A thrash metal landmark that expanded the genre's possibilities.",
+          image: "/images/music/albums/ride-the-lightning2.jpg"
+        },
+        "so-far-so-good": {
+          title: "So Far, So Good... So What!",
+          artist: "Megadeth",
+          year: "1988",
+          genre: "Thrash Metal",
+          review: "Megadeth's third album captures the band at their most raw and aggressive. Dave Mustaine's razor-sharp riffs and venomous vocals dominate tracks like 'Set the World Afire' and 'Liar'. The cover of 'Anarchy in the UK' is transformed into a thrash metal anthem, while 'In My Darkest Hour' showcases Mustaine's ability to write emotionally powerful music. The technical proficiency is staggering, with complex arrangements and lightning-fast solos. The production is deliberately raw, adding to the album's chaotic energy. Though lineup instability plagued the band during this period, the musical chemistry is undeniable. A crucial chapter in Megadeth's evolution and thrash metal history.",
+          image: "/images/music/albums/so-far-so-good2.jpg"
+        },
+        "physical-graffiti": {
+          title: "Physical Graffiti",
+          artist: "Led Zeppelin",
+          year: "1975",
+          genre: "Hard Rock/Blues Rock",
+          review: "Led Zeppelin's double album masterpiece showcases their incredible range and creative peak. From the funk-infused 'Trampled Under Foot' to the eastern-tinged 'Kashmir', the band explores new territories while maintaining their signature power. 'Houses of the Holy' and 'Down by the Seaside' reveal their softer side, while 'The Wanton Song' and 'Custard Pie' deliver classic Zep heaviness. John Bonham's drumming on 'In My Time of Dying' is nothing short of monumental. The album's sprawling nature allows each member to shine, with Jimmy Page's production creating a rich, layered sound. A towering achievement in rock history that rewards immersive listening.",
+          image: "/images/music/albums/physical-graffiti2.jpg"
+        },
+        "siamese-dream": {
+          title: "Siamese Dream",
+          artist: "The Smashing Pumpkins",
+          year: "1993",
+          genre: "Alternative Rock/Shoegaze",
+          review: "The Smashing Pumpkins' sophomore album is a shoegaze-tinged alternative rock masterpiece. Billy Corgan's wall-of-sound guitar approach creates a dense, dreamlike atmosphere, particularly on 'Cherub Rock' and 'Today'. The quieter moments like 'Disarm' and 'Spaceboy' provide emotional contrast with their string arrangements and vulnerable lyrics. The production is lush yet powerful, with layers of overdubbed guitars creating a unique sonic signature. Jimmy Chamberlin's drumming provides a jazz-influenced complexity rarely heard in alternative rock. A defining album of the 90s that balances massive riffs with delicate introspection.",
+          image: "/images/music/albums/siamese-dream2.jpg"
+        },
+        "dark-side": {
+          title: "The Dark Side of the Moon",
+          artist: "Pink Floyd",
+          year: "1973",
+          genre: "Progressive Rock",
+          review: "Pink Floyd's magnum opus is a seamless journey through themes of madness, time, and human experience. From the heartbeat intro of 'Speak to Me' to the final whispers of 'Eclipse', the album flows as one cohesive piece. 'Time' features one of rock's greatest drum fills, while 'Money' broke convention with its 7/4 time signature. The atmospheric textures created by Richard Wright's keyboards and David Gilmour's emotive guitar work are unparalleled. The production, with its innovative use of tape loops and analog effects, set new standards for studio recording. A timeless work that continues to reveal new details with each listen.",
+          image: "/images/music/albums/dark-side2.jpg"
+        },
+        "love-deluxe": {
+          title: "Love Deluxe",
+          artist: "Sade",
+          year: "1992",
+          genre: "Sophisti-Pop/R&B",
+          review: "Sade's fourth studio album is a masterpiece of quiet storm R&B and sophisticated soul. The minimalist arrangements create an intimate atmosphere that perfectly complements Sade Adu's smoky vocals. Tracks like 'No Ordinary Love' showcase the band's ability to create emotionally powerful music with restrained instrumentation. The album's production is pristine yet warm, with each element serving the song. Stuart Matthewman's guitar work is particularly noteworthy, blending jazz influences with pop sensibility. A timeless work that rewards attentive listening, proving that less can indeed be more.",
+          image: "/images/music/albums/love-deluxe2.jpg"
+        },
+        "naked-eyes": {
+          title: "Naked Eyes",
+          artist: "Naked Eyes",
+          year: "1983",
+          genre: "Synthpop/New Wave",
+          review: "This debut album from the British synthpop duo contains some of the most memorable electronic pop of the early 80s. Their cover of 'Always Something There to Remind Me' became an international hit, showcasing Pete Byrne's smooth vocals and Rob Fisher's innovative synth programming. The original tracks like 'Promises, Promises' demonstrate their songwriting chops beyond just interpreting Bacharach/David classics. The production balances new wave energy with pop accessibility, creating a sound that was both contemporary and timeless. A perfect snapshot of early 80s synthpop that still sounds fresh today.",
+          image: "/images/music/albums/naked-eyes2.jpg"
+        }
+      };
 
-<main>
-    <div id=""></div>
-</main>
+      // Initialize the page
+      document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('reviewModal');
+        const modalTitle = document.getElementById('modalAlbumTitle');
+        const modalContent = document.getElementById('modalContent');
+        const closeBtn = document.querySelector('.close-modal');
+        
+        // Set up media images (CD or vinyl) based on release year
+        document.querySelectorAll('.album-container').forEach(album => {
+          const albumId = album.getAttribute('data-album');
+          const year = parseInt(albumData[albumId].year);
+          const mediaContainer = album.querySelector('.album-media');
+          
+          // Determine which media image to use
+          const mediaType = (year < 1990) ? 'vinyl' : 'cd';
+          mediaContainer.innerHTML = `<img src="/images/music/${mediaType}.png" alt="${mediaType}">`;
+          
+          // Add click event for modal
+          album.addEventListener('click', function() {
+            const album = albumData[albumId];
+            
+            // Populate modal with album data
+            modalTitle.textContent = `${album.title} - ${album.artist} (${album.year})`;
+            
+            modalContent.innerHTML = `
+              <div class="album-info">
+                <img src="${album.image}" alt="${album.title}" class="modal-album-cover">
+                <div class="album-details">
+                  <div class="album-meta">
+                    <div class="album-meta-row">
+                      <span class="meta-label">Artist:</span>
+                      <span class="meta-value">${album.artist}</span>
+                    </div>
+                    <div class="album-meta-row">
+                      <span class="meta-label">Released:</span>
+                      <span class="meta-value">${album.year}</span>
+                    </div>
+                    <div class="album-meta-row">
+                      <span class="meta-label">Genre:</span>
+                      <span class="meta-value">${album.genre}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="review-text">
+                <p>${album.review}</p>
+              </div>
+            `;
+            
+            // Show modal
+            modal.style.display = 'flex';
+            setTimeout(() => {
+              document.querySelector('.review-modal').classList.add('active');
+            }, 10);
+          });
+        });
+        
+        // Close modal when clicking X button
+        closeBtn.addEventListener('click', closeModal);
+        
+        // Close modal when clicking outside content
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) {
+            closeModal();
+          }
+        });
+        
+        function closeModal() {
+          document.querySelector('.review-modal').classList.remove('active');
+          setTimeout(() => {
+            modal.style.display = 'none';
+          }, 300);
+        }
+      });
+    </script>
 
-<footer>
-    <p>Editors: </p>
-    <p> <p>
-</footer>
+    <script src="scriptforarticle.js"></script>
+  </body>
+</html>

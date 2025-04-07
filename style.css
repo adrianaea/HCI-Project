@@ -1,285 +1,402 @@
 /* CSS Reset */
 
 * {
-	margin: 0;
-	padding: 0;
-  }
-  
-  /* Background  */
-  body {
-	background-color: lightgrey;
-	background-repeat: no-repeat;
-  }
-  
-  /* Header */
-  .header {
-	min-height: 200em;
-	width: 100%;
-	background-position: center;
-	position: relative;
-  }
-  
-  /* Header */
+  margin: 0;
+  padding: 0;
+}
+
+/* Background  */
+body {
+  background-color: lightgrey;
+  background-repeat: no-repeat;
+}
+
+/* Header */
+.header {
+  min-height: 200em;
+  width: 100%;
+  background-position: center;
+  position: relative;
+}
+
+/* -----Header----- */
+h1 {
+  color: black;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 150px;
+}
+/* Adjust h1 padding when the screen width decreases */
+@media (max-width: 1048px) {
   h1 {
-	color: black;
-	font-size: 50px;
-	text-align: center;
-	margin-top: 0;
-	padding-top: 150px;
+    padding-top: 200px; 
   }
-  /* Body Text */
-  body {
-	color: black;
-	text-align: center;
-	margin-top: 0;
+}
+@media (max-width: 560px) {
+  h1 {
+    padding-top: 275px; 
   }
-  /* Paragraph Text Box */
-  p {
-	color: black;
-	font-size: 20px;
-	text-align: center;
+}
+
+/* -----Header----- */
+h2 {
+  color: black;
+  font-size: 50px;
+  text-align: center;
+  margin-top: 0;
+  padding-top: 50px;
+}
+/* Adjust h2 padding when the screen width decreases */
+@media (max-width: 1048px) {
+  h2 {
+    padding-top: 75px; 
   }
-  
-  /*  */
-  
-  /*  */
-  
-  /*  */
-  
-  /* --------------------------Home Page Subject links-------------------------- */
+}
+@media (max-width: 560px) {
+  h2 {
+    padding-top: 100px; 
+  }
+}
+
+
+/* Body Text */
+body {
+  color: black;
+  text-align: center;
+  margin-top: 0;
+}
+/* Paragraph Text Box */
+p {
+  color: black;
+  font-size: 20px;
+  text-align: center;
+}
+
+/*  */
+
+/*  */
+
+/*  */
+
+/* -------------Page Back Links------------- */
+.back-links {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.back-links a {
+  color: rgb(168, 124, 11);
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.back-links a:hover {
+  text-decoration: underline;
+}
+
+
+/* --------------------------Home Page Subject links-------------------------- */
+.subjectlist .listbtn {
+  width: 325px; /* Fixed width */
+  height: 150px; /* Fixed height */
+}
+.subjectlist img {
+  width: 400px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+/* --------------------------Subject's Article List Covers--------------------------  */
+.articlelist .listbtn {
+  width: 500px; /* Fixed width */
+  height: 250px; /* Fixed height */
+}
+.articlelist img {
+  width: 600px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+/* --------------------------List Common Button Covers--------------------------  */
+.list-common {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+/* article buttons */
+.list-common .listbtn {
+  position: absolute;
+  top: 50%; /* Adjust to position the link vertically */
+  left: 50%; /* Adjust to position the link horizontally */
+  transform: translate(-50%, -50%); /* Center the link */
+  background-color: rgba(249, 214, 14, 0.582);
+  color: white;
+  border-radius: 5px;
+  font-size: 25px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  text-align: center;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+}
+.list-common .listbtn:hover {
+  background-color: rgba(99, 89, 59, 0.795);
+}
+
+.list-common img {
+  object-fit: cover;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+/* Scaling for smaller screens */
+@media (max-width: 768px) {
   .subjectlist .listbtn {
-	width: 325px; /* Fixed width */
-	height: 150px; /* Fixed height */
+    width: 250px;
+    height: 125px;
+    font-size: 20px;
   }
   .subjectlist img {
-	width: 400px;
-	height: 200px;
-	object-fit: cover;
-	border-radius: 5px;
-	transition: transform 0.3s ease;
+    width: 300px;
+    height: 150px;
   }
-  
-  /* --------------------------Subject's Article List Covers--------------------------  */
+
   .articlelist .listbtn {
-	width: 500px; /* Fixed width */
-	height: 250px; /* Fixed height */
+    width: 325px;
+    height: 150px;
+    font-size: 20px;
   }
   .articlelist img {
-	width: 600px;
-	height: 300px;
-	object-fit: cover;
-	border-radius: 5px;
-	transition: transform 0.3s ease;
+    width: 400px;
+    height: 200px;
   }
-  
-  /* --------------------------List Common Button Covers--------------------------  */
-  .list-common {
-	display: inline-block;
-	position: relative;
-	z-index: 1;
+}
+
+/* Scaling for very small screens */
+@media (max-width: 480px) {
+  .subjectlist .listbtn {
+    width: 200px;
+    height: 100px;
+    font-size: 16px;
   }
-  
-  /* article buttons */
-  .list-common .listbtn {
-	position: absolute;
-	top: 50%; /* Adjust to position the link vertically */
-	left: 50%; /* Adjust to position the link horizontally */
-	transform: translate(-50%, -50%); /* Center the link */
-	background-color: rgba(249, 214, 14, 0.582);
-	color: white;
-	border-radius: 5px;
-	font-size: 25px;
-	text-decoration: none;
-	display: flex;
-	justify-content: center; /* Center content horizontally */
-	align-items: center; /* Center content vertically */
-	text-align: center;
-	white-space: nowrap; /* Prevent text wrapping */
-	overflow: hidden;
+  .subjectlist img {
+    width: 250px;
+    height: 125px;
   }
-  .list-common .listbtn:hover {
-	background-color: rgba(99, 89, 59, 0.795);
+
+  .articlelist .listbtn {
+    width: 250px;
+    height: 125px;
+    font-size: 16px;
   }
-  
-  .list-common img {
-	object-fit: cover;
-	overflow: hidden;
-	border-radius: 5px;
+  .articlelist img {
+    width: 300px;
+    height: 150px;
   }
+}
+
+/* --------------------------Navigation Bar-------------------------- */
+/* Account button */
+#account {
+  background-color: rgba(249, 213, 14, 0.791);
+  color: white;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 15px;
+}
+
+#account:hover {
+  background-color: rgba(99, 89, 59, 0.857);
+  border-radius: 15px;
+}
+
+/* Logo */
+#logoimg {
+  width: 110px;
+  height: auto;
+  margin-right: 10px; /* Add space between image and text */
+}
+.navbar .logo a:hover {
+  opacity: 0.9; /* Slight fade on hover */
+}
+
+/* The navigation menu */
+.navbar .logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  font-weight: bolder;
+  height: 50px;
+  width: 200px;
+}
+
+.navbar {
+  overflow: inherit;
+  background-color: black;
+  width: 100%;
+  position: fixed;
+  z-index: 1100;
+}
+
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: right;
+  overflow: inherit;
+  position: relative;
+  height: 70px;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 20px;
+  border: none;
+  outline: none;
+  color: white;
+  text-align: center;
+  padding: 14px 10px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  width: auto;
+}
+
+/* Add a background color to navigation links on hover */
+.subnav:hover .subnavbtn {
+  background-color: rgba(218, 165, 32, 0.741);
+  border-radius: 20px 20px 0 0;
+  padding-top: 7px;
+  margin-top: 12px;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: goldenrod;
+  z-index: 1100;
+  width: 100%;
+  border-radius: 0 0 20px 20px;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  display: block;
+  padding: 10px;
+  text-align: left;
+  color: white;
+  text-decoration: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Add a white background color on hover */
+.subnav-content a:hover {
+  background-color: #eee;
+  color: black;
+  width: 100%;
+}
+
+/* When you hover over last option in dropdown, it is rounded like the menu */
+.last:hover {
+  border-radius: 0 0 20px 20px;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: block;
+}
+
+/* -------------Anime Reviews Page------------- */
+.column-container{
+  padding-top: 50px;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#column{
+  height: 100%;
+  flex: 1;
+  margin: 0 5px;
+  padding: 10px; 
+  border: 5px solid #000000;
+  bottom: 0;
+}
+
+#column p{
+  text-align: center;
+}
+
+#column p1{
+   text-align: left;
+   font-size: 20px;
+}
+
+#column img{
+   width: 65%;
+   height: 45%;
+   margin: auto;
+   object-fit: cover;
+}
+
+p strong{
+  font-size: 25px ; 
+}
   
-  /* Scaling for smaller screens */
-  @media (max-width: 768px) {
-	.subjectlist .listbtn {
-	  width: 250px;
-	  height: 125px;
-	  font-size: 20px;
-	}
-	.subjectlist img {
-	  width: 300px;
-	  height: 150px;
-	}
+/* -------------Anime Up and Coming Page------------- */
+ table{
+   padding: 35px;
+   border-collapse: collapse;
+   margin-right: 175px;
+   margin-left: 175px;
+}
+   
+th{
+  font-size: 20px;
+}
+   
+td{
+  font-size: 25px;
+  border: 2px solid #000000;
+  width: 100%;
+  padding: 10px;
+}
+
+p1{
+  font-size: 30px;
+}
+
+
+
+
+
+
   
-	.articlelist .listbtn {
-	  width: 325px;
-	  height: 150px;
-	  font-size: 20px;
-	}
-	.articlelist img {
-	  width: 400px;
-	  height: 200px;
-	}
-  }
   
-  /* Scaling for very small screens */
-  @media (max-width: 480px) {
-	.subjectlist .listbtn {
-	  width: 200px;
-	  height: 100px;
-	  font-size: 16px;
-	}
-	.subjectlist img {
-	  width: 250px;
-	  height: 125px;
-	}
-  
-	.articlelist .listbtn {
-	  width: 250px;
-	  height: 125px;
-	  font-size: 16px;
-	}
-	.articlelist img {
-	  width: 300px;
-	  height: 150px;
-	}
-  }
-  
-  /* --------------------------Navigation Bar-------------------------- */
-  /* Account button */
-  #account {
-	background-color: rgba(249, 213, 14, 0.791);
-	color: white;
-	text-align: center;
-	padding: 10px 10px;
-	text-decoration: none;
-	width: 100%;
-	box-sizing: border-box;
-	border-radius: 15px;
-  }
-  
-  #account:hover {
-	background-color: rgba(99, 89, 59, 0.857);
-	border-radius: 15px;
-  }
-  
-  /* Logo */
-  #logoimg {
-	width: 110px;
-	height: auto;
-	margin-right: 10px; /* Add space between image and text */
-  }
-  .navbar .logo a:hover {
-	opacity: 0.9; /* Slight fade on hover */
-  }
-  
-  /* The navigation menu */
-  .navbar .logo a {
-	display: flex;
-	align-items: center;
-	text-decoration: none;
-	color: white;
-	font-size: 30px;
-	font-weight: bolder;
-	height: 50px;
-	width: 200px;
-  }
-  
-  .navbar {
-	overflow: inherit;
-	background-color: black;
-	width: 100%;
-	position: fixed;
-	z-index: 1100;
-  }
-  
-  /* Navigation links */
-  .navbar a {
-	float: left;
-	font-size: 20px;
-	color: white;
-	text-align: center;
-	padding: 10px 10px;
-	text-decoration: none;
-  }
-  
-  /* The subnavigation menu */
-  .subnav {
-	float: right;
-	overflow: inherit;
-	position: relative;
-	height: 70px;
-  }
-  
-  /* Subnav button */
-  .subnav .subnavbtn {
-	font-size: 20px;
-	border: none;
-	outline: none;
-	color: white;
-	text-align: center;
-	padding: 14px 10px;
-	background-color: inherit;
-	font-family: inherit;
-	margin: 0;
-	width: auto;
-  }
-  
-  /* Add a background color to navigation links on hover */
-  .subnav:hover .subnavbtn {
-	background-color: rgba(218, 165, 32, 0.741);
-	border-radius: 20px 20px 0 0;
-	padding-top: 7px;
-	margin-top: 12px;
-  }
-  
-  /* Style the subnav content - positioned absolute */
-  .subnav-content {
-	display: none;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	background-color: goldenrod;
-	z-index: 1100;
-	width: 100%;
-	border-radius: 0 0 20px 20px;
-  }
-  
-  /* Style the subnav links */
-  .subnav-content a {
-	display: block;
-	padding: 10px;
-	text-align: left;
-	color: white;
-	text-decoration: none;
-	width: 100%;
-	box-sizing: border-box;
-  }
-  
-  /* Add a white background color on hover */
-  .subnav-content a:hover {
-	background-color: #eee;
-	color: black;
-	width: 100%;
-  }
-  
-  /* When you hover over last option in dropdown, it is rounded like the menu */
-  .last:hover {
-	border-radius: 0 0 20px 20px;
-  }
-  
-  /* When you move the mouse over the subnav container, open the subnav content */
-  .subnav:hover .subnav-content {
-	display: block;
-  }
-  
-  /* footer */
   

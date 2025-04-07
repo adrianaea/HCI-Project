@@ -1,126 +1,406 @@
 <!DOCTYPE html>
-<html lang="eng">
-    <head>
-        <link rel="stylesheet" href="/style.css">
-        <title> | THE VAULT</title>
-        <meta carset="utf-8"/>
-        <meta name="" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <div class="logo" a href="home.html"><img src="images/logo.png"></a>
-    </head>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upcoming Music Events | THE VAULT</title>
+    <link rel="icon" href="/images/vault.png" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+      .event-toggle {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+        gap: 10px;
+      }
+      
+      .toggle-btn {
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s ease;
+      }
+      
+      .toggle-btn.active {
+        background-color: #1db954;
+      }
+      
+      .toggle-btn:hover:not(.active) {
+        background-color: #555;
+      }
+      
+      .events-container {
+        display: none;
+        padding: 0 20px;
+      }
+      
+      .events-container.active {
+        display: block;
+      }
+      
+      .event-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+      }
+      
+      .event-card {
+        background-color: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+        position: relative; /* absolute positioning during hover */
+      }
+      
+      .event-poster {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: all 0.3s ease;
+      }
+      
+      .event-details {
+        padding: 15px;
+        transition: all 0.3s ease;
+      }
+      
+      .event-title {
+        margin: 0 0 10px;
+        color: #333;
+        font-size: 1.2rem;
+      }
+      
+      .event-date-location {
+        color: #666;
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+      }
+      
+      .event-description {
+        color: #444;
+        line-height: 1.5;
+        margin-bottom: 15px;
+      }
+      
+      .event-highlights {
+        background-color: #f8f8f8;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 0.85rem;
+      }
+      
+      .event-highlights strong {
+        color: #333;
+      }
+      
+      /* Hover Effects */
+      .event-card:hover {
+        box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* enhanced shadow on hover */
+      }
+      
+      .event-card:hover .event-poster {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+      }
+      
+      .event-card:hover .event-details {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+      }
+      
+      /* this ensures the card maintains its size during hover */
+      .event-card {
+        min-height: 200px;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      
+      h2 {
+        text-align: center;
+        margin-bottom: 10px;
+        color: #333;
+      }
+      
+      .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 30px;
+        font-style: italic;
+      }
+      
+      .back-links {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 40px 0;
+      }
+      
+      .back-links a {
+        color: #1db954;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      
+      .back-links a:hover {
+        text-decoration: underline;
+      }
+      
+      .card-link {
+        display: block;
+        height: 100%;
+        width: 100%;
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      .event-card:hover .card-link {
+        color: transparent;
+      }
+    </style>
+  </head>
 
-    <body> 
-        <!-- Navigation menu -->   
-        <nav class="navbar">
-            <div class="logo">
-              <a href="/home.html"
-                ><img src="/images/vault.png" alt="Logo" id="logoimg" />The VAULT
-              </a>
-            </div>
+  <body>
+    <nav class="navbar"></nav>
+    <br/> <br/> <br/>
+    
+    <div class="content">
+      <h2>Upcoming Music Events</h2>
+      <p class="subtitle">Discover the hottest festivals and world tours coming soon</p>
+      
+      <div class="event-toggle">
+        <button class="toggle-btn active" data-target="festivals">Music Festivals</button>
+        <button class="toggle-btn" data-target="tours">World Tours</button>
+      </div>
+      
+      <!-- Festivals Section -->
+      <div id="festivals" class="events-container active">
+        <div class="event-cards">
+        
+          <!-- Dreamville Festival -->
+          <div class="event-card">
+            <a href="https://dreamvillefest.com/" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/dreamville-fest.jpg" alt="Dreamville Festival 2025 Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">Dreamville Festival</h3>
+                <p class="event-date-location">April 5-6, 2025 | Raleigh, North Carolina</p>
+                <p class="event-description">J. Cole's annual festival returns to Dorothea Dix Park with an incredible lineup of hip-hop and R&amp;B artists.</p>
+                <div class="event-highlights">
+                  <strong>Headliners:</strong> J. Cole, Lil Wayne with Hot Boys, Big Tymers<br>
+                  <strong>Also featuring:</strong> 21 Savage, Erykah Badu, Tems, Ludacris, PartyNextDoor, Ari Lennox, Chief Keef, Keyshia Cole, GloRilla, Coco Jones
+                </div>
+              </div>
+            </a>
+          </div>
           
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/signin.html" id="account">ACCOUNT </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="signin.html">Sign In</a> 
-                <a href="signup.html" class="last">Sign Up</a>
+          <!-- Cattle Country Festival -->
+          <div class="event-card">
+            <a href="https://cattlecountryfesttx.com" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/cattlecountry-fest.jpg" alt="Cattle Country Festival 2025 Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">Cattle Country Festival</h3>
+                <p class="event-date-location">April 10-12, 2025 | Gonzales, Texas</p>
+                <p class="event-description">A celebration of country music and cowboy culture in the heart of Texas.</p>
+                <div class="event-highlights">
+                  <strong>Headliners:</strong> Parker McCollum, Nickelback<br>
+                  <strong>Also featuring:</strong> Midland, Tanya Tucker, Clint Black, Wyatt Flores, Chase Rice, Gretchen Wilson
+                </div>
               </div>
-            </div>
+            </a>
+          </div>
           
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a> MORE </a> <i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="/FAQ.html">FAQ</a>
-                <a href="/contact.html">Contact</a>
-                <a href="/about.html" class="last">About</a>
+          <!-- Coachella -->
+          <div class="event-card">
+            <a href="https://coachella.com/" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/coachella-fest.jpg" alt="Coachella Festival 2025 Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">Coachella</h3>
+                <p class="event-date-location">April 11-13 & April 18-20, 2025 | Indio, California</p>
+                <p class="event-description">The iconic desert festival returns for two weekends of music, art, and culture.</p>
+                <div class="event-highlights">
+                  <strong>Headliners:</strong> Lady Gaga, Green Day, Post Malone, Travis Scott<br>
+                  <strong>Also featuring:</strong> Missy Elliott, Charli xcx, Megan Thee Stallion, Benson Boone, Lisa of BLACKPINK, FKA twigs, the Go-Go's, T-Pain, Zedd, Jessie Murph, Shaboozey
+                </div>
               </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/anime.html"> ANIME </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="anime1.html">News</a>
-                <a href="anime2.html">Reviews</a>
-                <a href="anime3.html" class="last">Shonen</a>
+            </a>
+          </div>
+          
+          <!-- New Orleans Jazz & Heritage Festival -->
+          <div class="event-card">
+            <a href="https://www.nojazzfest.com/" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/neworleansjazz-fest.jpg" alt="New Orleans Jazz & Heritage Festival 2025 Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">New Orleans Jazz & Heritage Festival</h3>
+                <p class="event-date-location">April 24 - May 4, 2025 | New Orleans, Louisiana</p>
+                <p class="event-description">Celebrating the rich musical heritage of New Orleans with an incredible diverse lineup.</p>
+                <div class="event-highlights">
+                  <strong>Featured artists:</strong> Pearl Jam, Dave Matthews Band, Luke Combs, Lil Wayne & The Roots, Lenny Kravitz, Santana, John Fogerty, Burna Boy, HAIM, Cage the Elephant, Laufey, Bryson Tiller, Harry Connick Jr., Patti LaBelle
+                </div>
               </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/food.html"> FOOD </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="food1.html">News</a>
-                <a href="food2.html">Reviews</a>
-                <a href="food3.html" class="last">Article 3</a>
+            </a>
+          </div>
+          
+          <!-- Stagecoach Festival -->
+          <div class="event-card">
+            <a href="https://www.stagecoachfestival.com/" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/stagecoach-fest.jpg" alt="Stagecoach Festival 2025 Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">Stagecoach Festival</h3>
+                <p class="event-date-location">April 25-27, 2025 | Indio, California</p>
+                <p class="event-description">Country music takes over the desert right after Coachella wraps.</p>
+                <div class="event-highlights">
+                  <strong>Headliners:</strong> Zach Bryan, Jelly Roll, Luke Combs<br>
+                  <strong>Also featuring:</strong> Brothers Osborne, Lana Del Rey, Sturgill Simpson, Nelly, Midland, Sammy Hagar, T-Pain, Creed, Backstreet Boys, Carly Pearce, Ashley McBryde, Shaboozey, Scotty McCreery, Goo Goo Dolls
+                </div>
               </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/gaming.html"> GAMING </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="gaming1.html">News</a>
-                <a href="gaming2.html">Reviews</a>
-                <a href="gaming3.html" class="last">Article 3</a>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tours Section -->
+      <div id="tours" class="events-container">
+        <div class="event-cards">
+        
+          <!-- M72 World Tour -->
+          <div class="event-card">
+            <a href="https://www.metallica.com/tour/?" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/metallica-tour.jpg" alt="Metallica's M72 Extended 2025 World Tour Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">M72 World Tour</h3>
+                <p class="event-date-location">April - November 2025 | North America, Australia, NZ</p>
+                <p class="event-description">Metallica extends their massive world tour into a third year with 21 North American shows plus Oceania dates.</p>
+                <div class="event-highlights">
+                  <strong>Band members:</strong> James Hetfield, Lars Ulrich, Kirk Hammett, Robert Trujillo<br>
+                  <strong>Tour duration:</strong> 8 months across multiple continents
+                </div>
               </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/movie.html"> MOVIES & TV </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="movie1.html">News</a>
-                <a href="movie2.html">Article 2</a>
-                <a href="movie3.html" class="last">Reviews</a>
+            </a>
+          </div>
+          
+          <!-- Hit Me Hard and Soft Tour -->
+          <div class="event-card">
+            <a href="https://store.billieeilish.com/pages/tour" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/billie-tour.jpg" alt="Billie Eilish's Hit Me Hard and Soft 2024-2025 World Tour Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">Hit Me Hard and Soft: The Tour</h3>
+                <p class="event-date-location">September 2024 - July 2025 | Worldwide</p>
+                <p class="event-description">Billie Eilish's seventh headlining tour in support of her third studio album.</p>
+                <div class="event-highlights">
+                  <strong>Album:</strong> Hit Me Hard and Soft<br>
+                  <strong>Tour duration:</strong> 11 months spanning multiple continents
+                </div>
               </div>
-            </div>
-            <div class="subnav">
-              <button class="subnavbtn">
-                <a href="/music.html"> MUSIC </a><i class="fa fa-caret-down"></i>
-              </button>
-              <div class="subnav-content">
-                <a href="music1.html">News</a>
-                <a href="music2.html">Reviews</a>
-                <a href="music3.html" class="last">Article 3</a>
+            </a>
+          </div>
+          
+          <!-- Grand National Tour -->
+          <div class="event-card">
+            <a href="https://grandnationaltour.com/" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/grandnational-tour.jpg" alt="Kendrick Lamar & SZA's 2025 Grand National Tour Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">Grand National Tour</h3>
+                <p class="event-date-location">April - June 2025 | North America</p>
+                <p class="event-description">Kendrick Lamar and SZA team up for a massive stadium tour across 19 cities.</p>
+                <div class="event-highlights">
+                  <strong>Album:</strong> GNX by Kendrick Lamar (featuring SZA)<br>
+                  <strong>Featured songs:</strong> "Luther", "Gloria"<br>
+                  <strong>Tour duration:</strong> 3 months across North America
+                </div>
               </div>
-            </div>
-          </nav>
-
-
-
-    <div class="text-box">
-        <h1>Article 5-1</h1>
-        <p>This page is a template page for the rest of the website. We should copy this and then edit it accordingly based on the webpage's purpose.</p>
+            </a>
+          </div>
+          
+          <!-- Chromakopia Tour -->
+          <div class="event-card">
+            <a href="https://chromakopiatour.com/" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/chromakopia-tour.jpg" alt="Tyler, the Creator's CHROMAKOPIA World Tour 2025 Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">Chromakopia: The World Tour</h3>
+                <p class="event-date-location">February - September 2025 | Worldwide</p>
+                <p class="event-description">Tyler, the Creator hits the road in support of his eighth studio album.</p>
+                <div class="event-highlights">
+                  <strong>Album:</strong> Chromakopia<br>
+                  <strong>Special guests:</strong> Lil Yachty, Paris Texas (select dates)<br>
+                  <strong>Tour duration:</strong> 8 months across 4 continents
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- Cowboy Carter Tour -->
+          <div class="event-card">
+            <a href="https://tour.beyonce.com/" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/beyonce-tour.png" alt="Beyonce's Cowboy Carter and the Rodeo Chitlin' Circuit Tour 2025 Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">Cowboy Carter and the Rodeo Chitlin' Circuit Tour</h3>
+                <p class="event-date-location">April - July 2025 | North America & Europe</p>
+                <p class="event-description">Beyoncé's first tour since Renaissance, celebrating her country album.</p>
+                <div class="event-highlights">
+                  <strong>Album:</strong> Cowboy Carter (Grammy-winning)<br>
+                  <strong>Featured songs:</strong> "Texas Hold 'Em", "Blackbird", "16 Carriages"<br>
+                  <strong>Tour duration:</strong> 4 months across 2 continents
+                </div>
+              </div>
+            </a>
+          </div>
+          
+          <!-- BLACKPINK Tour -->
+          <div class="event-card">
+            <a href="https://ygfamily.com/ko/artists/blackpink/concert" class="card-link" target="_blank" rel="noopener noreferrer">
+              <img src="/images/music/blackpink-tour.jpg" alt="BLACKPINK's BLACKPINK Summer 2025 World Tour Poster" class="event-poster">
+              <div class="event-details">
+                <h3 class="event-title">BLACKPINK Summer 2025 World Tour</h3>
+                <p class="event-date-location">July - August 2025 | Worldwide</p>
+                <p class="event-description">The K-pop superstars return to the stage with a new world tour.</p>
+                <div class="event-highlights">
+                  <strong>Members:</strong> Jisoo, Jennie, Rosé, Lisa<br>
+                  <strong>Tour locations:</strong> North America, Asia, Europe<br>
+                  <strong>Tour duration:</strong> 2 months across 3 continents
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="back-links">
+        <a href="/music.html">Back to Music</a>
+        <a href="/index.html">Back to Home</a>
+      </div>
     </div>
     <br />
     <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <a href="/music.html"> Back to Music </a>
-    <br>
-    <a href="/home.html"> Back to Home </a>
+    <footer class="footer"></footer>
 
-</body>
-
-<main>
-    <div id=""></div>
-</main>
-
-<footer>
-    <p>Editors: </p>
-    <p> <p>
-</footer>
+    <script>
+      // Toggle between festivals and tours
+      document.addEventListener('DOMContentLoaded', function() {
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        
+        toggleButtons.forEach(button => {
+          button.addEventListener('click', function() {
+            document.querySelectorAll('.toggle-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.events-container').forEach(container => container.classList.remove('active'));
+            
+            this.classList.add('active');
+            const targetId = this.getAttribute('data-target');
+            document.getElementById(targetId).classList.add('active');
+          });
+        });
+      });
+    </script>
+    
+    <script src="scriptforarticle.js"></script>
+  </body>
+</html>
