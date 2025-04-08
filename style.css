@@ -39,7 +39,7 @@ h2 {
 /* Adjust padding when the screen width decreases */
 @media (max-width: 1048px) {
   h1 {
-    padding-top: 200px; 
+    padding-top: 100px; 
   }
   h2 {
     padding-top: 75px; 
@@ -55,7 +55,7 @@ h2 {
 }
 @media (max-width: 560px) {
   h1 {
-    padding-top: 275px; 
+    padding-top: 100px; 
   }
   h2 {
     padding-top: 100px; 
@@ -241,9 +241,9 @@ body {
 
 /* Logo */
 #logoimg {
-  width: 50px;
-  height: auto;
-  margin-right: 10px; /* Add space between image and text */
+  width: auto;
+  height: 90px;
+  margin-right: -9px; /* Add space between image and text */
 }
 .navbar .logo a:hover {
   opacity: 0.9; /* Slight fade on hover */
@@ -262,12 +262,15 @@ body {
 }
 
 /* Logo stays on the top left */
-.navbar .logo {
+.navbar .logo a {
   display: flex;
   align-items: center;
   text-decoration: none;
   color: white;
-  font-size: 30px;
+  font-size: 30pt;
+  width: 50px;
+  line-height: 25pt;
+  color: goldenrod;
   font-weight: bolder;
 }
 
