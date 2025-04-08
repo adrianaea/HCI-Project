@@ -241,7 +241,7 @@ body {
 
 /* Logo */
 #logoimg {
-  width: 110px;
+  width: 50px;
   height: auto;
   margin-right: 10px; /* Add space between image and text */
 }
@@ -249,24 +249,102 @@ body {
   opacity: 0.9; /* Slight fade on hover */
 }
 
-/* The navigation menu */
-.navbar .logo a {
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+  width: 100%;
+  position: fixed;
+  z-index: 1100;
+  height: 70px;
+}
+
+/* Logo stays on the top left */
+.navbar .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
   color: white;
   font-size: 30px;
   font-weight: bolder;
-  height: 50px;
-  width: 200px;
 }
 
-.navbar {
-  overflow: inherit;
-  background-color: black;
-  width: 100%;
-  position: fixed;
-  z-index: 1100;
+nav svg {
+  fill: goldenrod;
+}
+
+#sidebar-active {
+  display: none;
+}
+
+/* Sidebar sections */
+.sidebar-sections {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Sidebar toggle button */
+.open-sidebar, .close-sidebar {
+  display: none;
+}
+
+/* Sidebar overlay */
+#overlay {
+  display: none;
+}
+.close-sidebar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 11;
+}
+/* Sidebar behavior for smaller screens */
+@media (max-width: 1050px) {
+  .sidebar-sections {
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden by default */
+    z-index: 10;
+    width: 300px;
+    height: 100%;
+    background-color: black;
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.55s ease-out;
+  }
+
+  
+  /* Show sidebar when active */
+  #sidebar-active:checked ~ .sidebar-sections {
+    right: 0;
+  }
+
+  /* Overlay for sidebar */
+  #sidebar-active:checked ~ #overlay {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* Show the sidebar toggle button */
+  .open-sidebar {
+    display: block;
+  }
+  /* Show the close button when the sidebar is active */
+  .close-sidebar {
+    display: block;
+    color:#eee
+  }
 }
 
 /* Navigation links */
@@ -349,42 +427,6 @@ body {
   display: block;
 }
 
-/* -------------Anime Reviews Page------------- */
-.column-container{
-  padding-top: 50px;
-  padding-bottom: 0px;
-  display: flex;
-  justify-content: space-between;
-}
-
-#column{
-  height: 100%;
-  flex: 1;
-  margin: 0 5px;
-  padding: 10px; 
-  border: 5px solid #000000;
-  bottom: 0;
-}
-
-#column p{
-  text-align: center;
-}
-
-#column p1{
-   text-align: left;
-   font-size: 20px;
-}
-
-#column img{
-   width: 65%;
-   height: 45%;
-   margin: auto;
-   object-fit: cover;
-}
-
-p strong{
-  font-size: 25px ; 
-}
   
 /* -------------Anime Up and Coming Page------------- */
  table{
