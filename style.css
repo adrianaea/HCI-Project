@@ -233,21 +233,11 @@ body {
   box-sizing: border-box;
   border-radius: 15px;
 }
-
 #account:hover {
   background-color: rgba(99, 89, 59, 0.857);
   border-radius: 15px;
 }
 
-/* Logo */
-#logoimg {
-  width: auto;
-  height: 90px;
-  margin-right: -9px; /* Add space between image and text */
-}
-.navbar .logo a:hover {
-  opacity: 0.9; /* Slight fade on hover */
-}
 
 /* Navbar container */
 .navbar {
@@ -261,7 +251,7 @@ body {
   height: 70px;
 }
 
-/* Logo stays on the top left */
+/* Logo on Navbar */
 .navbar .logo a {
   display: flex;
   align-items: center;
@@ -272,92 +262,28 @@ body {
   line-height: 25pt;
   color: goldenrod;
   font-weight: bolder;
+  margin-left: -15px;
 }
 
-nav svg {
-  fill: goldenrod;
+/* Logo */
+#logoimg {
+  width: auto;
+  height: 90px;
+  margin-right: -9px; /* Add space between image and text */
+}
+.navbar .logo a:hover {
+  opacity: 0.9; /* Slight fade on hover */
 }
 
-#sidebar-active {
-  display: none;
-}
-
-/* Sidebar sections */
-.sidebar-sections {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-/* Sidebar toggle button */
-.open-sidebar, .close-sidebar {
-  display: none;
-}
-
-/* Sidebar overlay */
-#overlay {
-  display: none;
-}
-.close-sidebar {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  cursor: pointer;
-  z-index: 11;
-}
-/* Sidebar behavior for smaller screens */
-@media (max-width: 1050px) {
-  .sidebar-sections {
-    flex-direction: column;
-    align-items: flex-start;
-    position: fixed;
-    top: 0;
-    right: -100%; /* Hidden by default */
-    z-index: 10;
-    width: 300px;
-    height: 100%;
-    background-color: black;
-    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
-    transition: 0.55s ease-out;
-  }
-
-  
-  /* Show sidebar when active */
-  #sidebar-active:checked ~ .sidebar-sections {
-    right: 0;
-  }
-
-  /* Overlay for sidebar */
-  #sidebar-active:checked ~ #overlay {
-    display: block;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  /* Show the sidebar toggle button */
-  .open-sidebar {
-    display: block;
-  }
-  /* Show the close button when the sidebar is active */
-  .close-sidebar {
-    display: block;
-    color:#eee
-  }
-}
-
-/* Navigation links */
+/* -------------Navigation links------------- */
 .navbar a {
   float: left;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
   text-align: center;
   padding: 10px 10px;
   text-decoration: none;
+  min-width: 20px;
 }
 
 /* The subnavigation menu */
@@ -375,7 +301,7 @@ nav svg {
   outline: none;
   color: white;
   text-align: center;
-  padding: 14px 10px;
+  padding: 14px 12px;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
@@ -406,11 +332,12 @@ nav svg {
 .subnav-content a {
   display: block;
   padding: 10px;
-  text-align: left;
+  text-align: center;
   color: white;
   text-decoration: none;
   width: 100%;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
 /* Add a white background color on hover */
@@ -428,6 +355,84 @@ nav svg {
 /* When you move the mouse over the subnav container, open the subnav content */
 .subnav:hover .subnav-content {
   display: block;
+}
+
+/* -------------Sidebar------------- */
+/* Sidebar menu button */
+nav svg {
+  fill: goldenrod;
+}
+
+/* Sidebar checkbox */
+#sidebar-active {
+  display: none;
+}
+
+/* Sidebar sections */
+.sidebar-sections {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Sidebar toggle button */
+.open-sidebar, .close-sidebar {
+  display: none;
+}
+
+/* Sidebar overlay */
+#overlay {
+  display: none;
+}
+.close-sidebar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 11;
+}
+/* Sidebar behavior for smaller screens */
+@media (max-width: 1030px) {
+  .sidebar-sections {
+    flex-direction: column;
+    align-items: flex-start;
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden by default */
+    z-index: 10;
+    width: 300px;
+    height: 100%;
+    background-color: black;
+    box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
+    transition: 0.55s ease-out;
+  }
+
+  /* Show sidebar when active */
+  #sidebar-active:checked ~ .sidebar-sections {
+    right: 0;
+  }
+
+  /* Overlay for sidebar */
+  #sidebar-active:checked ~ #overlay {
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  /* Show the sidebar toggle button */
+  .open-sidebar {
+    display: block;
+  }
+  /* Show the close button when the sidebar is active */
+  .close-sidebar {
+    display: block;
+    color:#eee
+  }
 }
 
   
@@ -454,11 +459,3 @@ p1{
   font-size: 30px;
 }
 
-
-
-
-
-
-  
-  
-  
