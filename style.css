@@ -357,7 +357,7 @@ body {
   display: block;
 }
 
-/* -------------Sidebar------------- */
+/* ----------------Sidebar---------------- */
 /* Sidebar menu button */
 nav svg {
   fill: goldenrod;
@@ -405,6 +405,8 @@ nav svg {
     background-color: black;
     box-shadow: -5px 0 5px rgba(0, 0, 0, 0.5);
     transition: 0.55s ease-out;
+    padding-top: 65px;
+    padding-left: 15px;
   }
 
   /* Show sidebar when active */
@@ -459,3 +461,11 @@ p1{
   font-size: 30px;
 }
 
+
+
+
+
+
+  
+  
+  
