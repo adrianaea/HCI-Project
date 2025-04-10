@@ -37,7 +37,7 @@ h2 {
   padding-top: 50px;
 }
 /* Adjust padding when the screen width decreases */
-@media (max-width: 1048px) {
+@media (max-width: 1030px) {
   h1 {
     padding-top: 100px; 
   }
@@ -54,12 +54,6 @@ h2 {
   }
 }
 @media (max-width: 560px) {
-  h1 {
-    padding-top: 100px; 
-  }
-  h2 {
-    padding-top: 100px; 
-  }
   p {
     padding-left: 35px;
     padding-right: 35px;
@@ -145,6 +139,7 @@ body {
   display: inline-block;
   position: relative;
   z-index: 1;
+  font-weight: 800;
 }
 
 /* article buttons */
@@ -153,10 +148,10 @@ body {
   top: 50%; /* Adjust to position the link vertically */
   left: 50%; /* Adjust to position the link horizontally */
   transform: translate(-50%, -50%); /* Center the link */
-  background-color: rgba(249, 214, 14, 0.582);
+  background-color: rgba(249, 214, 14, 0.60);
   color: white;
   border-radius: 5px;
-  font-size: 25px;
+  font-size: 30px;
   text-decoration: none;
   display: flex;
   justify-content: center; /* Center content horizontally */

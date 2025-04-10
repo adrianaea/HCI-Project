@@ -11,29 +11,37 @@
     <nav class="navbar"></nav>
     <br />
     <br />
-    <h1>Sign In</h1>
-
-    <form action="#" method="post">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" required /><br /><br />
-
-      <label for="password">Password:</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        required
-      /><br /><br />
-
-      <input type="submit" value="Sign In" />
-    </form>
-
-    <br />
-    <br />
-    <p>Don't have an account?</p>
-    <!-- Add a link to signup.html -->
-    <button><a href="signup.html">Sign Up</a></button>
-
+    <div class="wrapper">
+        <form action="">
+            <h1>Sign In</h1>
+            <br />
+            <div class="input-group">
+                <span class="icon">
+                    <ion-icon name="person"></ion-icon>
+                </span>
+                <input type="text" placeholder="Email" required>
+            </div>
+            <br />
+            <div class="input-group">
+                <span class="icon">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" placeholder="Password" required>
+            </div>
+            <br />
+            <div class="forgot-pass">
+                <a href="#">Forgot Password?</a>
+            </div>
+            <br />
+            <button type="submit" class="btn">Login</button>
+            
+            
+        </form>
+        <br />
+        
+        <p>Don't have an account? <a href="signup.html" class="register-link">Register</a></p>
+    </div>
+    
     <script src="script.js"></script>
   </body>
 </html>
