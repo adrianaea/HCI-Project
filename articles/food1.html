@@ -1,186 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOOD 1 | THE VAULT</title>
-    <link rel="icon" href="images/vault.png" type="image/x-icon" >
-    <link rel="stylesheet" href="/style.css" />
-    <style>
-      ul.a{
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FOOD 1 | THE VAULT</title>
+  <link rel="icon" href="../images/vault.png" type="image/x-icon" />
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    /* Minimal styling for the modal and card */
 
-      }
-      
-      .container{
+    #weekly-meals {
+      text-align: center;
+    }
 
-      }
-    
-    </style>
-  </head>
+    .meal-card {
+      width: 300px;
+      margin: 20px auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-  <body>
-    <nav class="navbar"> </nav>
-    <br />
-    <br />
-    <h2>Menu of the Week!</h2>
-    <p>Here we have a selection of delicious meals that YOU can try making at home!</p>
-    <br />
-    <br />
-      <img src="/images/tator cass.jpg" alt="tatorImage" height="300" width="400" />
-      <h3> Ingredients: </h3>
-        <div class="container">
-          <ul>
-           <li>
-            cooking spray
-          </li>
-          <li>
-            1 (32 ounce) package frozen bite-size potato nuggets (such as Tater Tots®), divided    
-          </li>
-          <li>
-            1 pound ground beef
-          </li>
-          <li>
-            1 cup chopped onion
-          </li>
-          <li>
-            2 teaspoons Worcestershire sauce
-          </li>
-          <li>
-            2 teaspoons Montreal-style steak seasoning (Optional)
-          </li>
-          <li>
-            1 teaspoon garlic powder
-          </li>
-          <li>
-              ½ teaspoon ground black pepper
-          </li>
-          <li>
-            1 (10.75 ounce) can condensed cream of mushroom soup
-          </li>
-          <li>
-            ½ cup milk
-          </li>
-          <li>
-            ½ cup grated Cheddar cheese
-          </li>
-          <li>
-            1 teaspoon Worcestershire sauce
-          </li>
-          <li>
-            1 cup grated Cheddar cheese
-          </li>
-        </ul>
-        <br />
-        <h3> Directions: </h3>
-        <ol>
-          <li>
-            Preheat oven to 350 degrees F (175 degrees C). Prepare a 13x9-inch casserole dish with cooking spray.
-          </li>
-          <li>
-            Spread 20 potato nuggets in the casserole dish.
-          </li>
-          <li>
-            Bake in preheated oven until warmed through, about 10 minutes.
-          </li>
-          <li>
-            Heat a large skillet over medium-high heat. Cook and stir beef and onion in the hot skillet until beef is completely browned, 5 to 7 minutes; drain and discard grease. Season beef mixture with 2 teaspoons Worcestershire sauce, steak seasoning, garlic powder, and black pepper.
-          </li>
-          <li>
-            Stir cream of mushroom soup, milk, 1/2 cup Cheddar cheese, and 1 teaspoon Worcestershire sauce together in a bowl.
-          </li>
-          <li>
-            Smash the warmed potato nuggets in the casserole dish to cover the bottom completely. Spread ground beef mixture over the mashed potato nuggets. Pour soup mixture evenly over the beef layer. Top with remaining potato nuggets and sprinkle 1 cup Cheddar cheese evenly over the nuggets.
-          </li>
-          <li>
-            Bake in preheated oven until casserole is bubbly and potatoes golden brown, 30 to 40 minutes.
-          </li>
-         </ol>
-       </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-      <img src="/images/PastaImage.jpg" alt="PastaImage" height="300" width="400" />
-      <br />
-      <h3> Ingredients: </h3>
-      <div class="container">
-       <ul>
-        <li>1 1/2 lbs sirloin or ribeye steak</li>
-        <li>1/3 cup balsamic vinegar</li>
-        <li>2 Tablespoons olive oil</li>
-        <li>12 ounces fettuccine pasta</li>
-        <li>3 Tablespoons unsalted butter</li>
-        <li>3 cloves garlic minced</li>
-        <li>3 Tablespoons flour</li>
-        <li>2 cups milk or heavy cream</li>
-        <li>1 teaspoon kosher salt</li>
-        <li>1/2 teaspoon black pepper</li>
-        <li>1/2 cup parmesan cheese</li>
-        <li>Salt and pepper to taste</li>
-        <li>Optional toppings: balsamic glaze, blue cheese, fresh chopped parsley</li>
+    .meal-card img {
+      width: 100%;
+      border-radius: 10px;
+      display: block;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 5% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 700px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .close {
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: red;
+    }
+
+    .back-links {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .back-links a {
+      margin: 0 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar"></nav>
+  <br />
+
+  <h2>Menu of the Week!</h2>
+  <p>Click each meal to check out it's ingredients and how its made!</p>
+
+  <section id="weekly-meals">
+    <div class="meal-card" onclick="openModal('modal1')">
+      <img src="../images/tatorCass.jpg" alt="Tator Casserole" />
+      <h3>Tator Casserole</h3>
+    </div>
+
+    <div class="meal-card" onclick="openModal('modal2')">
+      <img src="../images/pastaAlfredo.webp" alt="Pasta Alfredo" />
+      <h3>Steak Alfredo</h3>
+    </div>
+
+    <div class="meal-card" onclick="openModal('modal3')">
+      <img src="../images/CurryFood.jpg" alt="Curry" />
+      <h3>Chicken Curry</h3>
+    </div>
+  </section>
+
+  <!-- Modal for Tator Casserole -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <h3>Tator Casserole</h3>
+      <h4>Ingredients:</h4>
+      <ul>
+        <li>Cooking spray</li>
+        <li>1 (32 ounce) package frozen bite-size potato nuggets (such as Tater Tots®), divided</li>
+        <li>1 pound ground beef</li>
+        <li>1 cup chopped onion</li>
+        <li>2 teaspoons Worcestershire sauce</li>
+        <li>2 teaspoons Montreal-style steak seasoning (Optional)</li>
+        <li>1 teaspoon garlic powder</li>
+        <li>½ teaspoon ground black pepper</li>
+        <li>1 (10.75 ounce) can condensed cream of mushroom soup</li>
+        <li>½ cup milk</li>
+        <li>½ cup grated Cheddar cheese</li>
+        <li>1 teaspoon Worcestershire sauce</li>
+        <li>1 cup grated Cheddar cheese</li>
       </ul>
-      <br />
-      <h3> Directions: </h3>
+      <h4>Directions:</h4>
       <ol>
-       <li>Season both sides of the steak with salt and pepper and place in a ziplock or reusable storage bag with the balsamic vinegar and olive oil and marinate in the fridge for 30 minutes, or overnight</li>
-       <li>While the steak is marinating, cook the pasta according to the package directions. Bring a large pot of salted water to a boil then add the pasta and cook until al dente. Reserve 1/2 cup of the pasta cooking water then drain the pasta from the rest of the water and set aside.</li>
-       <li>Heat a large skillet, like a cast iron skillet, over medium high heat. Remove the steak from the marinade, shaking off any excess. Sear the steak for 4 minutes on each side or until it reaches your desired doneness. I like to remove the steak when it reaches an internal temp of 135°F for medium-rare steak (target temp 145°F). Rest for 10 minutes.</li>
-       <li>While the steak is resting, melt the butter in a deep skillet over medium-high heat. Add the garlic and cook for 1-2 minutes, until fragrant. Add the flour to the butter and stir well to create a paste (a roux). Cook the roux for 2-3 minutes to ensure the flour is fully cooked.</li>
-       <li>Slowly whisk in the milk then add the salt and pepper. Continue to stir and simmer for about 5 minutes, until thickened. Add the parmesan cheese and stir until melted and combined.</li>
-       <li>Toss the cooked pasta with the alfredo sauce. If the sauce seems too thick, pour in the reserved pasta water a few tablespoons at a time to reach your desired consistency.</li>
-       <li>Slice the steak into thin pieces. Divide the pasta into bowl and top with steak slices.  Drizzle with balsamic glaze and garnish with gorgonzola cheese and fresh parsley if desired.</li>
+        <li>Preheat oven to 350°F (175°C). Prepare a 13x9-inch casserole dish with cooking spray.</li>
+        <li>Spread 20 potato nuggets in the casserole dish.</li>
+        <li>Bake in preheated oven until warmed through, about 10 minutes.</li>
+        <li>Brown beef and onion in a skillet; drain. Season with Worcestershire sauce, steak seasoning, garlic powder, and black pepper.</li>
+        <li>In a bowl, mix soup, milk, ½ cup Cheddar, and Worcestershire sauce.</li>
+        <li>Mash baked nuggets in dish. Layer with beef, soup mixture, then top with remaining nuggets and cheese.</li>
+        <li>Bake until bubbly and golden brown, 30–40 minutes.</li>
       </ol>
+      <a href="https://www.allrecipes.com/recipe/237677/tater-tots-casserole/" target="_blank">View Full Recipe</a>
     </div>
-    <br />
-    <br />
-    <br />
-      <img src="/images/CurryFood.jpg" alt="CurryImage" height="300" width="400" />
-        <div class="container">
-          <br />
-        <h3> Ingredients: </h3>
-        <ul>
-          <li>3 tablespoons olive oil</li>
-          <li>1 small onion, chopped</li>
-          <li>2 cloves garlic, minced</li>
-          <li>3 tablespoons curry powder</li>
-          <li>1 teaspoon ground cinnamon</li>
-          <li>1 teaspoon paprika</li>
-          <li>1 bay leaf</li>
-          <li>½ teaspoon grated fresh ginger root</li>
-          <li>½ teaspoon white sugar</li>
-          <li>salt to taste</li>
-          <li>2 skinless, boneless chicken breast halves - cut into bite-size pieces</li>
-          <li>1 tablespoon tomato paste</li>
-          <li>1 cup plain yogurt</li>
-          <li>¾ cup coconut milk</li>
-          <li>½ lemon, juiced</li>
-          <li>½ teaspoon cayenne pepper</li>
-        </ul>
-        <br />
-        <h3> Directions: </h3>
-        <ol>
-          <li>Heat olive oil in a skillet over medium heat. Sauté onion until lightly browned.</li>
-          <li>Stir in garlic, curry powder, cinnamon, paprika, bay leaf, ginger, sugar, and salt. Continue stirring for 2 minutes.</li>
-          <li>Add chicken pieces, tomato paste, yogurt, and coconut milk. Bring to a boil, reduce heat, and simmer for 20 to 25 minutes.</li>
-          <li>Remove bay leaf, and stir in lemon juice and cayenne pepper. Simmer 5 more minutes.</li>
-          <li>Serve hot and enjoy!</li>
-        </ol>
-    </div>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="back-links"> 
-      <a href="/food.html"> Back to Food </a>
-      <a href="/index.html"> Back to Home </a>
-    </div>
-    <br />
-    <br />
-    <footer class="footer"></footer>
+  </div>
 
-    <script src="scriptforarticle.js"></script>
-  </body>
+  <!-- Modal for Steak Alfredo -->
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <h3>Steak Alfredo Pasta</h3>
+      <h4>Ingredients:</h4>
+      <ul>
+        <li>Sirloin steak</li>
+        <li>Balsamic vinegar</li>
+        <li>Fettuccine</li>
+        <li>Butter, flour, and garlic</li>
+        <li>Milk or cream</li>
+        <li>Grated parmesan cheese</li>
+        <li>Toppings of your choice</li>
+      </ul>
+      <h4>Directions:</h4>
+      <ol>
+        <li>Marinate the Steak in balsamic vinegar for 30 minutes.</li>
+        <li>Sear the Steak over high heat until the internal temp reaches 130°F (4-5 minutes on each side).</li>
+        <li>Make the Creamy Sauce. Create a roux then whisk in milk and parmesan cheese.</li>
+        <li>Add cooked fettucine to the alfredo sauce and toss to coat.</li>
+      </ol>
+      <a href="https://whatmollymade.com/steak-pasta/" target="_blank">View Full Recipe</a>
+    </div>
+  </div>
+
+  <!-- Modal for Chicken Curry -->
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <h3>Chicken Curry</h3>
+      <ul>
+        <li>3 tablespoons olive oil</li>
+        <li>1 small onion, chopped</li>
+        <li>2 cloves garlic, minced</li>
+        <li>3 tablespoons curry powder</li>
+        <li>1 teaspoon ground cinnamon</li>
+        <li>1 teaspoon paprika</li>
+        <li>1 bay leaf</li>
+        <li>½ teaspoon grated fresh ginger root</li>
+        <li>½ teaspoon white sugar</li>
+        <li>salt to taste</li>
+        <li>2 skinless, boneless chicken breast halves - cut into bite-size pieces</li>
+        <li>1 tablespoon tomato paste</li>
+        <li>1 cup plain yogurt</li>
+        <li>¾ cup coconut milk</li>
+        <li>½ lemon, juiced</li>
+        <li>½ teaspoon cayenne pepper</li>
+      </ul>
+      <ol>
+        <li>Heat olive oil in a skillet over medium heat. Sauté onion until lightly browned.</li>
+        <li>Stir in garlic, curry powder, cinnamon, paprika, bay leaf, ginger, sugar, and salt. Continue stirring for 2 minutes.</li>
+        <li>Add chicken pieces, tomato paste, yogurt, and coconut milk. Bring to a boil, reduce heat, and simmer for 20 to 25 minutes.</li>
+        <li>Remove bay leaf, and stir in lemon juice and cayenne pepper. Simmer 5 more minutes.</li>
+        <li>Serve hot and enjoy!</li>
+      </ol>
+      <a href="https://www.allrecipes.com/recipe/46822/indian-chicken-curry-ii/" target="_blank">View Full Recipe</a>
+    </div>
+  </div>
+
+  <div class="back-links">
+    <a href="/food.html">Back to Food</a>
+    <a href="/index.html">Back to Home</a>
+  </div>
+
+  <footer class="footer"></footer>
+  
+  <script src="scriptforarticle.js"></script>
+
+  <!-- JavaScript -->
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const modals = document.querySelectorAll('.modal');
+      modals.forEach(modal => {
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    };
+  </script>
+</body>
 </html>

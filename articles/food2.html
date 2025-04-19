@@ -1,41 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FOOD 2 | THE VAULT</title>
-    <link rel="icon" href="images/vault.png" type="image/x-icon" >
-    <link rel="stylesheet" href="/style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Restaurant Go-To's!| THE VAULT</title>
+  <link rel="icon" href="../images/vault.png" type="image/x-icon" >
+  <title>Restaurant Go-To’s</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+      padding: 20px;
+    }
 
-  <body>
-    <nav class="navbar"> </nav>
-    <br />
-    <br />
-    <h2>Restaurant Go-To's!</h2>
-    <p>Check out what's good around here for your next outing!</p>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="back-links"> 
+    .restaurant-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      overflow: hidden;
+      max-width: 900px;
+      margin-inline: auto;
+    }
+
+    .restaurant-images {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .main-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .dish-imgs {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 20px;
+    }
+
+    .dish-imgs img {
+      width: 150px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .restaurant-content {
+      padding: 20px;
+    }
+
+    .restaurant-name {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .review {
+      font-size: 16px;
+      margin-bottom: 15px;
+      color: #555;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .map-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .map-link:hover {
+      text-decoration: underline;
+    }
+
+    .comment-section {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .comment-section h3 {
+      margin-bottom: 15px;
+    }
+
+    .comment-section textarea,
+    .comment-section input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    .comment-section button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .comment-section button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar"></nav>
+  <br />
+
+  <!-- Restaurant Card Start -->
+  <div class="restaurant-card">
+    <div class="restaurant-images">
+      <img class="main-img" src="images/restaurant-main.jpg" alt="Restaurant Main Image" />
+      <div class="dish-imgs">
+        <img src="images/dish1.jpg" alt="Dish 1" />
+        <img src="images/dish2.jpg" alt="Dish 2" />
+      </div>
+    </div>
+    <div class="restaurant-content">
+      <h2 class="restaurant-name">Golden Spoon Bistro</h2>
+      <p class="review">
+        This cozy little spot hits the mark every time. Their seafood paella is next-level delicious and the staff is super friendly. I recommend coming just before sunset for a perfect vibe.
+      </p>
+      <div class="stars">⭐⭐⭐⭐☆</div>
+      <a class="map-link" href="https://www.google.com/maps?q=golden+spoon+bistro" target="_blank">View on Map</a>
+    </div>
+  </div>
+  <!-- Restaurant Card End -->
+
+  <!-- Comment Section -->
+  <div class="comment-section">
+    <h3>Leave a Comment</h3>
+    <input type="text" placeholder="Your name" />
+    <textarea rows="4" placeholder="Write your comment here..."></textarea>
+    <button>Post Comment</button>
+  </div>
+      <div class="back-links"> 
       <a href="/food.html"> Back to Food </a>
       <a href="/index.html"> Back to Home </a>
     </div>
-    <br />
-    <br />
     <footer class="footer"></footer>
-
     <script src="scriptforarticle.js"></script>
-  </body>
+</body>
 </html>
