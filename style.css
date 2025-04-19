@@ -71,9 +71,8 @@ body {
   margin-top: 0;
 }
 /* Paragraph Text Box */
-@media (min-width:1048px) {
+@media (min-width:1030px) {
   p {
-    color: black;
     font-size: 20px;
     padding: 10px 150px;
   }
