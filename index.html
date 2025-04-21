@@ -6,6 +6,17 @@
     <title>HOME | THE VAULT</title>
     <link rel="icon" href="images/vault.png" type="image/x-icon" >
     <link rel="stylesheet" href="style.css" />
+    <style> 
+      .morelinks a:link, .morelinks a:visited {
+          text-decoration: none;
+          color: darkgoldenrod;
+          font-size: 20px;
+          font-weight: bold;
+      }
+      .morelinks a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
     <nav class="navbar"></nav>
@@ -50,10 +61,12 @@
     <br />
     <br />
     <br />
-    <h3>MORE</h3>
-    <h4><a href="FAQ.html">FAQ</a></h4>
-    <h4><a href="about.html">About Us</a></h4>
-    <h4><a href="contact.html">Contact Us</a></h4>
+    <div class="morelinks">
+      <h3>MORE</h3>
+      <h4><a href="FAQ.html">FAQ</a></h4>
+      <h4><a href="about.html">About Us</a></h4>
+      <h4><a href="contact.html">Contact Us</a></h4>
+    </div>
     <br />
     <br />
     <br />
@@ -66,9 +79,11 @@
     <br />
     <br />
     <br />
-    <h2>ACCOUNT</h2>
-    <h3><a href="signin.html">Sign In</a></h3>
-    <h3><a href="signup.html">Sign Up</a></h3>
+    <div class="morelinks">
+      <h3>ACCOUNT</h3>
+      <h4><a href="signin.html">Sign In</a></h4>
+      <h4><a href="signup.html">Sign Up</a></h4>
+    </div>
     <br />
     <br />
     <br />

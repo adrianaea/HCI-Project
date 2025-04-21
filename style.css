@@ -45,8 +45,7 @@ h2 {
     padding-top: 75px; 
   }
   p {
-    padding-left: 70px;
-    padding-right: 70px;
+    padding: 7px 70px 3px;
     font-size: 20px;
   }
   ul {
@@ -55,8 +54,7 @@ h2 {
 }
 @media (max-width: 560px) {
   p {
-    padding-left: 35px;
-    padding-right: 35px;
+    padding: 5px 35px 3px;
     font-size: 20px;
   }
   ul {
