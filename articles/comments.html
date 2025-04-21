@@ -1,0 +1,81 @@
+<style>
+  .comment-section {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background: #fafafa;
+    font-family: sans-serif;
+  }
+  
+  .comment-section h2 {
+    font-size: 25px;
+  }
+  
+  #comment-form input, #comment-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  #comment-form button {
+    padding: 10px 20px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  #comments-container .comment {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+</style> 
+
+<div id="comment-section" class="comment-section">
+  <h2>Leave a Comment</h2>
+  <form id="comment-form">
+    <input type="text" id="username" placeholder="Your name" required />
+    <textarea id="comment" placeholder="Write your comment..." required></textarea>
+    <button type="submit">Post Comment</button>
+  </form>
+  <div id="comments-container"></div>
+</div>
+
+
+<script>
+  const commentForm = document.getElementById('comment-form');
+  const commentsContainer = document.getElementById('comments-container');
+
+  commentForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const commentText = document.getElementById('comment').value.trim();
+
+    if (username && commentText) {
+      const commentBox = document.createElement('div');
+      commentBox.classList.add('comment');
+
+      const now = new Date();
+      const timestamp = now.toLocaleString();
+
+      commentBox.innerHTML = `
+        <strong>${username}</strong> <em style="color: gray;">(${timestamp})</em>
+        <p>${commentText}</p>
+      `;
+
+      commentsContainer.prepend(commentBox);
+
+      commentForm.reset();
+    }
+  });
+</script>
+

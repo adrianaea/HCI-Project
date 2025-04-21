@@ -12,6 +12,14 @@ fetch("footerforarticle.html")
     footer.innerHTML = data;
   });
   
+  
+const comments = document.querySelector(".comments");
+fetch("comments.html")
+  .then((res) => res.text())
+  .then((data) => {
+    comments.innerHTML = data;
+  });
+  
   /*-----Weekly Meals Page----*/
   function openModal() {
   document.getElementById("mealModal").style.display = "block";
