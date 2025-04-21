@@ -4,38 +4,130 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOOD 3 | THE VAULT</title>
-    <link rel="icon" href="images/vault.png" type="image/x-icon" >
+    <link rel="icon" href="images/vault.png" type="image/x-icon" />
     <link rel="stylesheet" href="/style.css" />
+    <style>
+      body {
+        background-color: #f8f8f8;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      .hover-container {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .hover-card {
+        position: relative;
+        width: 300px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        background-color: #fff;
+      }
+
+      .hover-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .hover-card:hover .overlay {
+        opacity: 1;
+      }
+
+      .overlay h3 {
+        margin-top: 0;
+      }
+
+      .overlay a {
+        color: #ffd700;
+        text-decoration: underline;
+        margin-top: 10px;
+      }
+
+      .back-links {
+        text-align: center;
+        margin: 30px 0;
+      }
+
+      .back-links a {
+        margin: 0 10px;
+        color: #333;
+        text-decoration: none;
+      }
+    </style>
   </head>
 
   <body>
     <nav class="navbar"> </nav>
     <br />
-    <br />
     <h2>Dessert Extraveganza!</h2>
-    <p>Take a look through these delicious desserts and attempt to make one!</p>
+    <p style="text-align: center;">
+      Try out one of our delightful recipes or check out these other places for a sweet treat!
+    </p>
     <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <div class="back-links"> 
-      <a href="/food.html"> Back to Food </a>
-      <a href="/index.html"> Back to Home </a>
+
+    <div class="hover-container">
+      <!-- S'mores Dip Card -->
+      <div class="hover-card">
+        <img src="../images/smoreD.jpg" alt="S'mores Dip" />
+        <div class="overlay">
+          <h3>S'mores Dip</h3>
+          <p>
+            Layer milk chocolate and marshmallows, bake for 5 mins, and dip with graham crackers for gooey perfection.
+          </p>
+          <a href="https://www.cleverlysimple.com/smores-dip/" target="_blank">View Full Recipe</a>
+        </div>
+      </div>
+
+      <!-- Chiffon Culture Bakery Cafe Card -->
+      <div class="hover-card">
+        <img src="../images/chiffonB.jpg" alt="Chiffon Culture Bakery Cafe" />
+        <div class="overlay">
+          <h3>Chiffon Culture Bakery Cafe</h3>
+          <p>
+            Enjoy delicate chiffon cakes, creamy matcha rolls, and refreshing drinks in a cozy, dreamy atmosphere.
+            Rated ⭐⭐⭐⭐☆.
+          </p>
+          <a href="https://www.google.com/maps/place/Chiffon+Culture+Bakery+Cafe/@28.6484622,-81.2792993,17z" target="_blank">View on Map</a>
+        </div>
+      </div>
     </div>
+
+    <div class="back-links">
+      <a href="/food.html">Back to Food</a>
+      <a href="/index.html">Back to Home</a>
+    </div>
+
     <br />
     <br />
     <footer class="footer"></footer>
-
     <script src="scriptforarticle.js"></script>
   </body>
 </html>
